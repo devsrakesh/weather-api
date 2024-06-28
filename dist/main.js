@@ -12,8 +12,8 @@ async function bootstrap() {
     }));
     app.enableCors({ origin: '*' });
     const config = new swagger_1.DocumentBuilder()
-        .setTitle('SMS CRM Api')
-        .setDescription('this is the api for sms CRM ')
+        .setTitle('squadra Api')
+        .setDescription('this is the api for squadra ')
         .setVersion('1.0')
         .addTag('sms')
         .build();

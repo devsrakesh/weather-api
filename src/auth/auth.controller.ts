@@ -5,7 +5,6 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { Response } from 'src/common/interceptor/response.interface';
 import { Types } from 'mongoose';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
 
 @ApiTags('Authentication')
 @Controller('auth')
@@ -14,9 +13,9 @@ export class AuthController {
 
   @Post('register')
   @ApiOperation({ summary: 'User registration' })
-  @ApiBody({ type: CreateUserDto })
+  @ApiBody({ type: UpdateAuthDto })
   @ApiResponse({ status: 201, description: 'User registered successfully' })
-  async signup(@Body() dto: CreateUserDto): Promise<
+  async signup(@Body() dto: UpdateAuthDto): Promise<
     Response<{
       email: string;
       _id: Types.ObjectId;

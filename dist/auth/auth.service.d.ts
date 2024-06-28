@@ -22,12 +22,11 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { UpdateAuthDto } from './dto';
-import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import { Model, Types } from 'mongoose';
 import { User } from 'src/user/entity/user.entity';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { UpdateAuthDto } from './dto';
 export declare class AuthService {
     private userModel;
     private jwt;
@@ -39,7 +38,7 @@ export declare class AuthService {
         accessToken: string;
         refreshToken: string;
     }>;
-    register(dto: CreateUserDto): Promise<{
+    register(dto: UpdateAuthDto): Promise<{
         email: string;
         _id: Types.ObjectId;
         accessToken: string;

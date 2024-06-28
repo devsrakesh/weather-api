@@ -27,11 +27,10 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { Response } from 'src/common/interceptor/response.interface';
 import { Types } from 'mongoose';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
 export declare class AuthController {
     private authService;
     constructor(authService: AuthService);
-    signup(dto: CreateUserDto): Promise<Response<{
+    signup(dto: UpdateAuthDto): Promise<Response<{
         email: string;
         _id: Types.ObjectId;
         accessToken: string;

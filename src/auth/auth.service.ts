@@ -4,7 +4,6 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import * as argon from 'argon2';
 import { Model, Types } from 'mongoose';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { User } from 'src/user/entity/user.entity';
 import { UpdateAuthDto } from './dto';
 
@@ -40,7 +39,7 @@ export class AuthService {
     };
   }
 
-  async register(dto: CreateUserDto) {
+  async register(dto: UpdateAuthDto) {
     const hash = await argon.hash(dto.password);
     const oldUser = await this.userModel.findOne({ email: dto.email });
     if (oldUser) {

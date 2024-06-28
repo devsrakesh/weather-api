@@ -10,7 +10,6 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
-const crm_module_1 = require("./crm/crm.module");
 const user_module_1 = require("./user/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const role_module_1 = require("./role/role.module");
@@ -31,7 +30,6 @@ exports.AppModule = AppModule = __decorate([
                 }),
             }),
             user_module_1.UserModule,
-            crm_module_1.CrmModule,
             auth_module_1.AuthModule,
             role_module_1.RoleModule,
             organization_module_1.OrganizationModule,

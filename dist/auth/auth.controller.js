@@ -19,7 +19,6 @@ const auth_service_1 = require("./auth.service");
 const update_auth_dto_1 = require("./dto/update-auth.dto");
 const refresh_token_dto_1 = require("./dto/refresh-token.dto");
 const mongoose_1 = require("mongoose");
-const create_user_dto_1 = require("../user/dto/create-user.dto");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -42,11 +41,11 @@ exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
     (0, swagger_1.ApiOperation)({ summary: 'User registration' }),
-    (0, swagger_1.ApiBody)({ type: create_user_dto_1.CreateUserDto }),
+    (0, swagger_1.ApiBody)({ type: update_auth_dto_1.UpdateAuthDto }),
     (0, swagger_1.ApiResponse)({ status: 201, description: 'User registered successfully' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [update_auth_dto_1.UpdateAuthDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signup", null);
 __decorate([
