@@ -24,6 +24,7 @@
 
 ## Description
 
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
@@ -32,6 +33,10 @@
 $ npm install
 ```
 
+## Update Environment Variable
+```
+MONGODB_URL="mongodb+srv://userName:password@mymongodb.1cbmv3g.mongodb.net/weather?retryWrites=true&w=majority&appName=mymongodb"
+```
 ## Running the app
 
 ```bash
