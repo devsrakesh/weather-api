@@ -53,8 +53,11 @@ export class AuthController {
       refreshToken: string;
     }>
   > {
-    const userId = new Types.ObjectId(dto.userId); // Ensure userId is cast to Types.ObjectId
-    const data = await this.authService.refreshToken(userId, dto.refreshToken);
+    const userId = dto.userId; // Ensure userId is cast to Types.ObjectId
+    const data = await this.authService.refreshToken({
+      userId: userId,
+      refreshToken: dto.refreshToken,
+    });
     return { data, message: 'Token refreshed successfully' };
   }
 }

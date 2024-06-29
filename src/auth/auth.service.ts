@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import * as argon from 'argon2';
 import { Model, Types } from 'mongoose';
 import { User } from 'src/user/entity/user.entity';
-import { UpdateAuthDto } from './dto';
+import { RefreshTokenDto, UpdateAuthDto } from './dto';
 
 @Injectable()
 export class AuthService {
@@ -82,20 +82,27 @@ export class AuthService {
     });
   }
 
-  async refreshToken(id: Types.ObjectId, refreshToken: string) {
-    const user = await this.userModel.findById(id);
+  async refreshToken(dto: RefreshTokenDto) {
+    const { userId, refreshToken } = dto;
+
+    // Convert to ObjectId
+    const objectId = new Types.ObjectId(userId);
+
+    console.log(objectId, refreshToken);
+
+    const user = await this.userModel.findById(userId);
+
     if (!user || !user.refreshToken) {
       console.log('1', user);
-
       throw new ForbiddenException('Access Denied');
     }
+
     const refreshTokenMatches = await argon.verify(
       user.refreshToken,
       refreshToken,
     );
     if (!refreshTokenMatches) {
       console.log('2', user);
-
       throw new ForbiddenException('Access Denied');
     }
 

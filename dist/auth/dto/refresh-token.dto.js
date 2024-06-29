@@ -11,21 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RefreshTokenDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const class_validator_1 = require("class-validator");
 class RefreshTokenDto {
 }
 exports.RefreshTokenDto = RefreshTokenDto;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        description: 'User password',
-        example: 'I',
+        description: 'User ID',
+        example: '60c72b2f9b1e8b4f44d69b7a',
     }),
+    (0, class_validator_1.IsMongoId)(),
     __metadata("design:type", String)
 ], RefreshTokenDto.prototype, "userId", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        description: 'User password',
+        description: 'User refresh token',
         example: 'password123',
     }),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], RefreshTokenDto.prototype, "refreshToken", void 0);
 //# sourceMappingURL=refresh-token.dto.js.map

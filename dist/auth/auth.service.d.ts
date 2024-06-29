@@ -26,7 +26,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Model, Types } from 'mongoose';
 import { User } from 'src/user/entity/user.entity';
-import { UpdateAuthDto } from './dto';
+import { RefreshTokenDto, UpdateAuthDto } from './dto';
 export declare class AuthService {
     private userModel;
     private jwt;
@@ -49,7 +49,7 @@ export declare class AuthService {
         refreshToken: string;
     }>;
     updateRefreshToken(userId: Types.ObjectId, refreshToken: string): Promise<void>;
-    refreshToken(id: Types.ObjectId, refreshToken: string): Promise<{
+    refreshToken(dto: RefreshTokenDto): Promise<{
         accessToken: string;
         refreshToken: string;
     }>;

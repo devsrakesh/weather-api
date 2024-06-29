@@ -18,7 +18,6 @@ const swagger_1 = require("@nestjs/swagger");
 const auth_service_1 = require("./auth.service");
 const update_auth_dto_1 = require("./dto/update-auth.dto");
 const refresh_token_dto_1 = require("./dto/refresh-token.dto");
-const mongoose_1 = require("mongoose");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -32,8 +31,11 @@ let AuthController = class AuthController {
         return { data, message: 'User logged in successfully' };
     }
     async refreshToken(dto) {
-        const userId = new mongoose_1.Types.ObjectId(dto.userId);
-        const data = await this.authService.refreshToken(userId, dto.refreshToken);
+        const userId = dto.userId;
+        const data = await this.authService.refreshToken({
+            userId: userId,
+            refreshToken: dto.refreshToken,
+        });
         return { data, message: 'Token refreshed successfully' };
     }
 };
